@@ -3,21 +3,16 @@ import { FormControl } from "@material-ui/core";
 
 import CustomInput from "../CustomInput";
 
-export default function FromInput({ label, placeholder, ...props }) {
+export default function FromInput({ ...props }) {
   const [field, meta] = useField(props);
   return (
-    <FormControl style={{ width: "100%" }} error={meta.touched && !!meta.error}>
-      <CustomInput
-        placeholder={placeholder}
-        {...field}
-        {...props}
-        style={{
-          marginBottom: "0.5rem",
-          padding: 10,
-        }}
-      />
+    <FormControl
+      style={{ width: "100%", marginTop: "1.5rem" }}
+      error={meta.touched && !!meta.error}
+    >
+      <CustomInput {...field} {...props} />
       {meta.error && meta.touched ? (
-        <label style={{ color: "red" }}>{meta.error}</label>
+        <label style={{ color: "red", marginTop: 10 , fontSize: 14,}}>{meta.error}</label>
       ) : null}
     </FormControl>
   );

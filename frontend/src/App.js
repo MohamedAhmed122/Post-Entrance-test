@@ -1,12 +1,12 @@
 import CustomButton from "./App/common/CustomButton";
 import CustomInput from "./App/common/CustomInput";
 import "./App.css";
+import CreatePost from "./App/components/PostForm";
 
 function App() {
   return (
     <div className="app">
-      <CustomInput placeholder="Search" />
-      <CustomButton disabled title="button" />
+      <CreatePost />
     </div>
   );
 }
