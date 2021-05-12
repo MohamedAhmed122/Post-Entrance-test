@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Loading from "../common/Loading";
 import { getPostById } from "../requests/posts";
 import "./stylePages.css";
 
@@ -15,7 +16,7 @@ export default function PostDetail({ match }) {
     }
   }, [id]);
 
-  if (!post) return <div>loading</div>;
+  if (!post) return <Loading size={100} />;
   return (
     <div className="flexCol">
       <div className="detail">

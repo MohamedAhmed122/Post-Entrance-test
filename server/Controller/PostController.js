@@ -46,10 +46,10 @@ export const updatePost = asyncHandler(async (req, res) => {
 
   const post = await Post.findById(req.params.id);
   if (post) {
-    product.title = title;
-    product.image = image;
-    product.description = description;
-    product.header = header;
+    post.title = title;
+    post.image = image;
+    post.description = description;
+    post.header = header;
 
     const updatedPost = await post.save();
 

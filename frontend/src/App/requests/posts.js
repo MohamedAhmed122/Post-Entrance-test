@@ -14,15 +14,16 @@ export const getPostById = async (id) => {
 };
 
 // create new post
-export const createPost = async () => {
-  return await axios.post("/api/posts");
+export const createPost = async (values) => {
+  const { data } = await axios.post(`${baseUrl}/api/posts`, values);
+  return data;
 };
 // update post
-export const updatePost = async (id) => {
-  return await axios.put(`/api/posts${id}`);
+export const updatePost = async (id, values) => {
+  return await axios.put(`${baseUrl}/api/posts${id}`, values);
 };
 
 // delete post
 export const deletePost = async (id) => {
-  return await axios.delete(`/api/posts${id}`);
+  return await axios.delete(`${baseUrl}/api/posts${id}`);
 };

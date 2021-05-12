@@ -3,6 +3,9 @@ import * as Yup from "yup";
 import FromInput from "../../common/FormInput";
 import CustomButton from "../../common/CustomButton";
 import "./styleform.css";
+import { createPost } from "../../requests/posts";
+import LottieView from "../../common/LottieView";
+import { useState } from "react";
 
 const validationSchema = Yup.object({
   header: Yup.string().required().min(10).label("Header"),
@@ -12,6 +15,7 @@ const validationSchema = Yup.object({
 });
 
 export default function CreatePost() {
+  const[displayDone, setDisplayDone] = useState(false)
   return (
     <div className="create_post">
       <div className="card">
@@ -20,7 +24,16 @@ export default function CreatePost() {
           validationSchema={validationSchema}
           initialValues={{ header: "", title: "", description: "", image: "" }}
           onSubmit={(values) => {
-            console.log(values);
+            const { header, title, description, image } = values;
+            createPost({
+              header,
+              title,
+              description,
+              image,
+            })
+              .then((res) => console.log(res))
+              .catch((err) => console.log(err));
+              setDisplayDone(true)
           }}
         >
           {({ dirty, isSubmitting, isValid }) => (
@@ -35,12 +48,13 @@ export default function CreatePost() {
               <CustomButton
                 type="submit"
                 title="Create Post"
-                disabled={!isValid || isSubmitting }
+                disabled={!isValid || isSubmitting}
               />
             </Form>
           )}
         </Formik>
       </div>
+     {displayDone && <LottieView setDisplayDone={setDisplayDone} />}
     </div>
   );
 }

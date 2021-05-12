@@ -1,6 +1,6 @@
 .post {
-  max-width: 700px;
-  width: auto;
+  width: 700px;
+  /* width: auto; */
   height: auto;
   padding: 10px 30px;
   border: 1px solid #fce8a0;
