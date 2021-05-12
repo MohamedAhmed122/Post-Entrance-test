@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Post from "../components/Post";
-import { getPost } from "../request/posts";
+import { getPost } from "../requests/posts";
 
 export default function PostPage() {
   const [posts, setPosts] = useState(null);
