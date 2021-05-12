@@ -3,6 +3,11 @@ import mongoose from "mongoose";
 const commentSchema = mongoose.Schema(
   {
     comment: { type: String, required: true },
+    // postId: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   required: true,
+    //   ref: "Post",
+    // },
   },
   {
     timestamps: true,
@@ -29,7 +34,7 @@ const postSchema = mongoose.Schema({
   likes: {
     type: String,
     required: false,
-    default: 0
+    default: 0,
   },
 
   comments: [commentSchema],

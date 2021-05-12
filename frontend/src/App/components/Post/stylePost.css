@@ -17,3 +17,19 @@
   object-fit: cover;
   border: 1px solid #fce8a0;
 }
+
+@media (max-width: 750px) {
+  .post {
+    width: 95%;
+    padding: 5px;
+  }
+  .post > img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 550px) {
+  .rows{
+    flex-direction: column;
+  }
+}

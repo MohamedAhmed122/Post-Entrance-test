@@ -18,7 +18,7 @@ export default function PostDetail({ match }) {
 
   if (!post) return <Loading size={100} />;
   return (
-    <div className="flexCol">
+    <div className="flexCol" style={{ marginTop: 50 }}>
       <div className="detail">
         <img src={post.image} alt="" />
         <div className="flex mr">

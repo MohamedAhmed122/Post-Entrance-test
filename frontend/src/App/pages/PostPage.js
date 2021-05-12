@@ -6,6 +6,7 @@ import { deletePost, getPost } from "../requests/posts";
 export default function PostPage() {
   const [posts, setPosts] = useState(null);
   const [postDeleted, setPostDeleted] = useState(false);
+  const [editedComment, setEditedComment] = useState(null);
 
   useEffect(() => {
     getPost()
@@ -26,13 +27,15 @@ export default function PostPage() {
 
   if (!posts) return <Loading size={100} />;
   return (
-    <div className="flexCol" style={{ marginTop: 80 }}>
+    <div className="flexCol" style={{ marginTop: 180 }}>
       {posts.map((post) => (
         <Post
           key={post._id}
           post={post}
           handleDeletePost={handleDeletePost}
           setPostDeleted={setPostDeleted}
+          editedComment={editedComment}
+          setEditedComment={setEditedComment}
         />
       ))}
     </div>

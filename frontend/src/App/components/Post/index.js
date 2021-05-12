@@ -11,8 +11,15 @@ import BorderColorIcon from "@material-ui/icons/BorderColor";
 import ChatIcon from "@material-ui/icons/Chat";
 import "./stylePost.css";
 
-export default function Post({ post, handleDeletePost, setPostDeleted }) {
+export default function åPost({
+  post,
+  handleDeletePost,
+  setPostDeleted,
+  editedComment,
+  setEditedComment,
+}) {
   const [displayComment, setDisplayComment] = useState(false);
+
   const history = useHistory();
 
   return (
@@ -20,7 +27,7 @@ export default function Post({ post, handleDeletePost, setPostDeleted }) {
       <h2 className="title">{post.title}</h2>
       <p>{post.description}</p>
       {post.image && <img src={post.image} alt="post" />}
-      <div className="flex_between">
+      <div className="flex_between rows">
         <Row
           text={`${post.likes} likes`}
           Icon={() => <ThumbUpAltIcon style={{ color: "#4267B2" }} />}
@@ -31,7 +38,7 @@ export default function Post({ post, handleDeletePost, setPostDeleted }) {
           Icon={() => <VisibilityIcon style={{ color: "#e7c64f" }} />}
         />
         <Row
-          onClick={() => setDisplayComment(true)}
+          onClick={() => setDisplayComment(!displayComment)}
           text="Comments"
           Icon={() => <ChatIcon style={{ color: "gray" }} />}
         />
@@ -52,9 +59,13 @@ export default function Post({ post, handleDeletePost, setPostDeleted }) {
       {displayComment && (
         <>
           {" "}
-          <CommentFrom /> <CommentList />
-          <CommentList />
-          <CommentList />
+          <CommentFrom editedComment={editedComment} />
+          {post.comments.map((comment) => (
+            <CommentList
+              comment={comment}
+              setEditedComment={setEditedComment}
+            />
+          ))}
           <IconButton onClick={() => setDisplayComment(false)}>
             <ExpandLessIcon style={{ color: "gray" }} />
           </IconButton>
