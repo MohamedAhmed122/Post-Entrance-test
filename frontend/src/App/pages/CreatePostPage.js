@@ -12,7 +12,7 @@ export default function CreatePostPage({ match }) {
         .catch((err) => console.log(err));
     }
   }, [id]);
-  
+
   return (
     <div>
       <CreatePost post={post} />

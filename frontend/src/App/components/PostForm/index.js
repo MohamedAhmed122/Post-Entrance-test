@@ -71,7 +71,7 @@ export default function CreatePost({ post }) {
               />
               <CustomButton
                 type="submit"
-                title="Create Post"
+                title={post?.header ? "Edit Post" : "Create Post"}
                 disabled={!isValid || isSubmitting}
               />
             </Form>
