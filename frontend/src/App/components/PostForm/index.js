@@ -5,7 +5,8 @@ import CustomButton from "../../common/CustomButton";
 import "./styleform.css";
 import { createPost, updatePost } from "../../requests/posts";
 import LottieView from "../../common/LottieView";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useSnackbar } from "notistack";
 import Loading from "../../common/Loading";
 import { useParams } from "react-router";
 
@@ -18,12 +19,35 @@ const validationSchema = Yup.object({
 
 export default function CreatePost({ post }) {
   const [displayDone, setDisplayDone] = useState(false);
-  console.log(post?.header);
+  const { enqueueSnackbar } = useSnackbar();
   const { id } = useParams();
+
+  const handleSubmit = (values) => {
+    const { header, title, description, image } = values;
+    if (id) {
+      updatePost(id, {
+        header,
+        title,
+        description,
+        image,
+      })
+        .then((res) => setDisplayDone(true))
+        .catch((err) => enqueueSnackbar(`Oops, ${err}`, { variant: "error" }));
+    } else {
+      createPost({
+        header,
+        title,
+        description,
+        image,
+      })
+        .then((res) => setDisplayDone(true))
+        .catch((err) => enqueueSnackbar(`Oops, ${err}`, { variant: "error" }));
+    }
+  };
+
   if (id) {
     if (!post) return <Loading />;
   }
-
   return (
     <div className="create_post">
       <div className="card">
@@ -36,29 +60,7 @@ export default function CreatePost({ post }) {
             description: post?.description || "",
             image: post?.image || "",
           }}
-          onSubmit={(values) => {
-            const { header, title, description, image } = values;
-            if (id) {
-              updatePost(id, {
-                header,
-                title,
-                description,
-                image,
-              })
-                .then((res) => console.log(res))
-                .catch((err) => console.log(err));
-            } else {
-              createPost({
-                header,
-                title,
-                description,
-                image,
-              })
-                .then((res) => console.log(res))
-                .catch((err) => console.log(err));
-            }
-            setDisplayDone(true);
-          }}
+          onSubmit={(values) => handleSubmit(values)}
         >
           {({ dirty, isSubmitting, isValid }) => (
             <Form className="flexCol">
