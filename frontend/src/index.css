@@ -11,3 +11,48 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+button{
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  outline-width: 0;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+.mr_right{
+  margin-right: 2rem;
+}
+.mr_left{
+  margin-left: 2rem;
+}
+
+.flex{
+  display: flex;
+  align-items: center;
+}
+.flex_center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flexCol{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.flex_between{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex_evenly{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
