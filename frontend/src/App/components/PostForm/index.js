@@ -3,9 +3,11 @@ import * as Yup from "yup";
 import FromInput from "../../common/FormInput";
 import CustomButton from "../../common/CustomButton";
 import "./styleform.css";
-import { createPost } from "../../requests/posts";
+import { createPost, updatePost } from "../../requests/posts";
 import LottieView from "../../common/LottieView";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Loading from "../../common/Loading";
+import { useParams } from "react-router";
 
 const validationSchema = Yup.object({
   header: Yup.string().required().min(10).label("Header"),
@@ -14,26 +16,48 @@ const validationSchema = Yup.object({
   image: Yup.string().url(),
 });
 
-export default function CreatePost() {
-  const[displayDone, setDisplayDone] = useState(false)
+export default function CreatePost({ post }) {
+  const [displayDone, setDisplayDone] = useState(false);
+  console.log(post?.header);
+  const { id } = useParams();
+  if (id) {
+    if (!post) return <Loading />;
+  }
+
   return (
     <div className="create_post">
       <div className="card">
-        <h2 className="title">Create Post </h2>
+        <h2 className="title">{post?.header ? "Edit" : "Create"} Post </h2>
         <Formik
           validationSchema={validationSchema}
-          initialValues={{ header: "", title: "", description: "", image: "" }}
+          initialValues={{
+            header: post?.header || "",
+            title: post?.title || "",
+            description: post?.description || "",
+            image: post?.image || "",
+          }}
           onSubmit={(values) => {
             const { header, title, description, image } = values;
-            createPost({
-              header,
-              title,
-              description,
-              image,
-            })
-              .then((res) => console.log(res))
-              .catch((err) => console.log(err));
-              setDisplayDone(true)
+            if (id) {
+              updatePost(id, {
+                header,
+                title,
+                description,
+                image,
+              })
+                .then((res) => console.log(res))
+                .catch((err) => console.log(err));
+            } else {
+              createPost({
+                header,
+                title,
+                description,
+                image,
+              })
+                .then((res) => console.log(res))
+                .catch((err) => console.log(err));
+            }
+            setDisplayDone(true);
           }}
         >
           {({ dirty, isSubmitting, isValid }) => (
@@ -54,7 +78,7 @@ export default function CreatePost() {
           )}
         </Formik>
       </div>
-     {displayDone && <LottieView setDisplayDone={setDisplayDone} />}
+      {displayDone && <LottieView setDisplayDone={setDisplayDone} />}
     </div>
   );
 }

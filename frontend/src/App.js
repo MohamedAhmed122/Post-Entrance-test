@@ -10,6 +10,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={PostPage} />
         <Route exact path="/create-post" component={CreatePost} />
+        <Route exact path="/edit/:id" component={CreatePost} />
         <Route exact path="/post/:id" component={PostDetail} />
       </Switch>
     </div>

@@ -20,10 +20,10 @@ export const createPost = async (values) => {
 };
 // update post
 export const updatePost = async (id, values) => {
-  return await axios.put(`${baseUrl}/api/posts${id}`, values);
+  return await axios.put(`${baseUrl}/api/posts/${id}`, values);
 };
 
 // delete post
 export const deletePost = async (id) => {
-  return await axios.delete(`${baseUrl}/api/posts${id}`);
+  return await axios.delete(`${baseUrl}/api/posts/${id}`);
 };
