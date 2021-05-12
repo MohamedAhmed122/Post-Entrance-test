@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Post from "../components/Post";
+import { getPost } from "../request/posts";
 
 export default function PostPage() {
+  const [posts, setPosts] = useState(null);
+  const [postError, setPostError] = useState(null);
+
+  useEffect(() => {
+    getPost()
+      .then((res) => setPosts(res))
+      .catch((err) => setPostError(err));
+  }, []);
+  if (!posts) return <div>Loading</div>;
   return (
-    <div style={{ margin: 100 }}>
-      <Post image />
+    <div className="flexCol" style={{ marginTop: 80 }}>
+      {posts.map((post) => (
+        <Post key={post._id} post={post} />
+      ))}
     </div>
   );
 }

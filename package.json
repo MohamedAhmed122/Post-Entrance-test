@@ -1,5 +1,6 @@
 {
   "name": "post_test",
+  "proxy": "http://127.0.0.1:5000",
   "version": "1.0.0",
   "main": "server.js",
   "type": "module",
@@ -7,8 +8,8 @@
   "scripts": {
     "start": "node server/server.js",
     "server": "nodemon server/server.js",
-    "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run frontend\" ",
+    "client": "yarn start --prefix frontend",
+    "dev": "concurrently \"yarn run server\" \"yarn run frontend\" ",
     "data:import": "node server/seeder",
     "data:destroy": "node server/seeder -d"
   },

@@ -7,23 +7,14 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ChatIcon from "@material-ui/icons/Chat";
 import { useState } from "react";
 import { IconButton } from "@material-ui/core";
-
-export default function Post({ image }) {
+export default function Post({ post }) {
   const [displayComment, setDisplayComment] = useState(false);
+
   return (
     <div className="post">
-      <h2 className="title">this my tile for this post</h2>
-      <p>
-        lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s,
-      </p>
-      {image && (
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjiLOiEP-qSR6OgMrPELypnHToVToGPEc_qTkuLq5mMKwCCMoQ4x6Fsn19uvBoDO0qZaQ&usqp=CAU"
-          alt="post"
-        />
-      )}
+      <h2 className="title">{post.title}</h2>
+      <p>{post.description}</p>
+      {post.image && <img src={post.image} alt="post" />}
       <div className="flex_between">
         <Row
           text="120 likes"
