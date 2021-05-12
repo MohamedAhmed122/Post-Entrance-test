@@ -1,12 +1,15 @@
-import CustomButton from "./App/common/CustomButton";
-import CustomInput from "./App/common/CustomInput";
 import "./App.css";
-import CreatePost from "./App/components/PostForm";
+import { Route, Switch } from "react-router-dom";
+import CreatePost from "./App/pages/CreatePostPage";
+import PostPage from "./App/pages/PostPage";
 
 function App() {
   return (
     <div className="app">
-      <CreatePost />
+      <Switch>
+        <Route exact path="/" component={PostPage} />
+        <Route exact path="/create-post" component={CreatePost} />
+      </Switch>
     </div>
   );
 }

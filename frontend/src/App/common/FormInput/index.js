@@ -12,7 +12,9 @@ export default function FromInput({ ...props }) {
     >
       <CustomInput {...field} {...props} />
       {meta.error && meta.touched ? (
-        <label style={{ color: "red", marginTop: 10 , fontSize: 14,}}>{meta.error}</label>
+        <label style={{ color: "red", marginTop: 10, fontSize: 14 }}>
+          {meta.error}
+        </label>
       ) : null}
     </FormControl>
   );

@@ -1,0 +1,13 @@
+.comment {
+  border: 1px solid #fce8a0;
+  padding: 10px;
+  padding-bottom:30px ;
+  border-radius: 20px;
+}
+.date {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-top: -30px;
+  margin-right: 30px;
+}
