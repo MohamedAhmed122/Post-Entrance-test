@@ -1,19 +1,5 @@
 import mongoose from "mongoose";
-
-const commentSchema = mongoose.Schema(
-  {
-    comment: { type: String, required: true },
-    // postId: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   required: true,
-    //   ref: "Post",
-    // },
-  },
-  {
-    timestamps: true,
-  }
-);
-
+import {commentSchema} from "./CommentModels.js";
 const postSchema = mongoose.Schema({
   title: {
     type: String,
@@ -36,7 +22,6 @@ const postSchema = mongoose.Schema({
     required: false,
     default: 0,
   },
-
   comments: [commentSchema],
 });
 

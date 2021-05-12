@@ -1,14 +1,14 @@
+import { useState } from "react";
+import { useSnackbar } from "notistack";
+import { useParams } from "react-router";
+import { createPost, updatePost } from "../../requests/posts";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FromInput from "../../common/FormInput";
 import CustomButton from "../../common/CustomButton";
-import "./styleform.css";
-import { createPost, updatePost } from "../../requests/posts";
 import LottieView from "../../common/LottieView";
-import { useState } from "react";
-import { useSnackbar } from "notistack";
 import Loading from "../../common/Loading";
-import { useParams } from "react-router";
+import "./styleform.css";
 
 const validationSchema = Yup.object({
   header: Yup.string().required().min(10).label("Header"),

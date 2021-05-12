@@ -28,7 +28,7 @@ export default function PostPage() {
       .then((res) => console.log(res))
       .catch((err) => enqueueSnackbar(`Oops, ${err}`, { variant: "error" }));
   };
-
+  console.log(posts);
   if (!posts) return <Loading size={100} />;
   return (
     <div className="flexCol" style={{ marginTop: 180 }}>

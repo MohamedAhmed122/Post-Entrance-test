@@ -7,14 +7,16 @@ const data = [
     image:
       "https://www.investopedia.com/thmb/0LeCd2viroCKR_Tb4vvK-jStuO4=/700x443/filters:fill(auto,1)/cardanologo-5bfc32b1c9e77c0026b65328.jpg",
     likes: 210,
-    comments: [
-      {
-        comment: "I love Cardano",
-      },
-      {
-        comment: "Cardano(ADA) to the moon :)",
-      },
-    ],
+    // comments: [
+    //   {
+    //     comment: "I love Cardano",
+    //     postId: "609bd01284fb6e7b0eb77910",
+    //   },
+    //   {
+    //     comment: "Cardano(ADA) to the moon :)",
+    //     postId: "609bd01284fb6e7b0eb77910",
+    //   },
+    // ],
   },
   {
     title: "Thinking in React Hooks",
@@ -24,11 +26,12 @@ const data = [
     image:
       "https://www.webrexstudio.com/wp-content/uploads/2019/05/react-js-image.png",
     likes: 140,
-    comments: [
-      {
-        comment: "Love React & React-native ",
-      },
-    ],
+    // comments: [
+    //   {
+    //     comment: "Love React & React-native ",
+    //     postId: "609bd01284fb6e7b0eb77913",
+    //   },
+    // ],
   },
   {
     title: "MOHAMED SALAH",
@@ -39,14 +42,16 @@ const data = [
     image:
       "http://images6.fanpop.com/image/photos/43000000/MOHAMED-SALAH-THE-REAL-EGYPT-PEOPLE-KING-OF-EGYPT-egypt-43069480-720-540.jpg",
     likes: 140,
-    comments: [
-      {
-        comment: "Big fan of Liverpool ",
-      },
-      {
-        comment: "Mo Salah & mane ",
-      },
-    ],
+    // comments: [
+    //   {
+    //     comment: "Big fan of Liverpool ",
+    //     postId: "609bd01284fb6e7b0eb77915",
+    //   },
+    //   {
+    //     comment: "Mo Salah & mane ",
+    //     postId: "609bd01284fb6e7b0eb77915",
+    //   },
+    // ],
   },
 ];
 export default data;

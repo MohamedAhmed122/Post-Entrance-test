@@ -1,5 +1,6 @@
 import Post from "../models/PostModel.js";
 import asyncHandler from "express-async-handler";
+import Comment from "../models/CommentModels.js";
 
 // @desc   Get all posts
 //@route   GET /api/posts
