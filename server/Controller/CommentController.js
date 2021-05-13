@@ -15,9 +15,6 @@ export const getComments = asyncHandler(async (req, res) => {
 
 
 
-// @desc    Create Review for product
-// @route   POST /api/products/:id/reviews
-// @access  Private
 export const createComment = asyncHandler(async (req, res) => {
   
   const { comment } = req.body;
@@ -33,17 +30,15 @@ export const createComment = asyncHandler(async (req, res) => {
    
 });
 
-// @desc    Create Review for product
-// @route   POST /api/products/:id/reviews
-// @access  Private
+
 export const updateComment = asyncHandler(async (req, res) => {
 
   const { comment } = req.body;
   //id of the specific comment 
-  const curComment = await Comment.findbyId(req.params.id); 
+  const curComment = await Comment.findById(req.params.id); 
   if(curComment)
   {
-    curComment.comment = commment;
+    curComment.comment = comment;
     const updatedPost = await curComment.save();
     res.status(201).json(updatedPost)  
   }else {
@@ -52,12 +47,10 @@ export const updateComment = asyncHandler(async (req, res) => {
 }});
 
 
-// @desc    Create Review for product
-// @route   POST /api/products/:id/reviews
-// @access  Private
+
 export const deleteComment = asyncHandler(async (req, res) => {
   //id of the specific comment 
-  const curComment = await Comment.findbyId(req.params.id); 
+  const curComment = await Comment.findById(req.params.id); 
   if(curComment)
   {
     await curComment.remove()

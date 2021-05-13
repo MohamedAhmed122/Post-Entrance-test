@@ -9,7 +9,7 @@ import {
 const router = express.Router();
 router.route("/").get(getComments);
 router.route("/:id").post(createComment);
-router.route(":id/update").put(updateComment);
-router.route(":id/delete").delete(deleteComment);
+router.route("/:id").put(updateComment);
+router.route("/:id").delete(deleteComment);
 
 export default router;

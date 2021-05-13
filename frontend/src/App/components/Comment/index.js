@@ -6,8 +6,18 @@ import Chip from "@material-ui/core/Chip";
 import DeleteIcon from "@material-ui/icons/Delete";
 import BorderColorIcon from "@material-ui/icons/BorderColor";
 import "./styleComment.css";
+import {
+  createComment,
+  deleteComment,
+  updateComment,
+} from "../../requests/comment";
 
-export function CommentFrom({ editedComment }) {
+export function CommentFrom({
+  editedComment,
+  setCommentChanged,
+  setEditedComment,
+  id,
+}) {
   const [comment, setComment] = useState("");
 
   useEffect(() => {
@@ -15,9 +25,20 @@ export function CommentFrom({ editedComment }) {
       setComment(editedComment.comment);
     }
   }, [editedComment]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(comment);
+    if (editedComment.id) {
+      updateComment(editedComment.id, { comment })
+        .then((res) => setCommentChanged(true))
+        .catch((err) => console.log(err));
+      setEditedComment("");
+    } else {
+      createComment(id, { comment })
+        .then((res) => setCommentChanged(true))
+        .catch((err) => console.log(err));
+    }
+
     setComment("");
   };
 
@@ -41,10 +62,20 @@ export function CommentFrom({ editedComment }) {
   );
 }
 
-export function CommentList({ comment, setEditedComment }) {
+export function CommentList({
+  comment,
+  setEditedComment,
+  setCommentChanged,
+  id,
+}) {
+  const handleDelete = (id) => {
+    deleteComment(id)
+      .then((res) => setCommentChanged(true))
+      .catch((err) => console.log(err));
+  };
   // console.log(comment);
   return (
-    <div>
+    <div style={{ width: 700 }}>
       <p className="comment">{comment.comment}</p>
       <div className="date">
         <Chip label="today at 3:00" variant="outlined" className="chip" />
@@ -59,7 +90,10 @@ export function CommentList({ comment, setEditedComment }) {
         >
           <BorderColorIcon style={{ color: "green" }} />
         </IconButton>
-        <IconButton className="icon_button">
+        <IconButton
+          className="icon_button"
+          onClick={() => handleDelete(comment._id)}
+        >
           <DeleteIcon style={{ color: "red" }} />
         </IconButton>
       </div>

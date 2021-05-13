@@ -5,21 +5,12 @@ import { CommentFrom, CommentList } from "../Comment/index";
 import { Button, ButtonGroup, IconButton } from "@material-ui/core";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import VisibilityIcon from "@material-ui/icons/Visibility";
-import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import DeleteIcon from "@material-ui/icons/Delete";
 import BorderColorIcon from "@material-ui/icons/BorderColor";
 import ChatIcon from "@material-ui/icons/Chat";
 import "./stylePost.css";
 
-export default function åPost({
-  post,
-  handleDeletePost,
-  setPostDeleted,
-  editedComment,
-  setEditedComment,
-}) {
-  const [displayComment, setDisplayComment] = useState(false);
-
+export default function åPost({ post, handleDeletePost, setPostDeleted }) {
   const history = useHistory();
 
   return (
@@ -38,7 +29,7 @@ export default function åPost({
           Icon={() => <VisibilityIcon style={{ color: "#e7c64f" }} />}
         />
         <Row
-          onClick={() => setDisplayComment(!displayComment)}
+          onClick={() => history.push(`/post/${post._id}`)}
           text="Comments"
           Icon={() => <ChatIcon style={{ color: "gray" }} />}
         />
@@ -56,21 +47,6 @@ export default function åPost({
           </Button>
         </ButtonGroup>
       </div>
-      {displayComment && (
-        <>
-          {" "}
-          <CommentFrom editedComment={editedComment} />
-          {post.comments.map((comment) => (
-            <CommentList
-              comment={comment}
-              setEditedComment={setEditedComment}
-            />
-          ))}
-          <IconButton onClick={() => setDisplayComment(false)}>
-            <ExpandLessIcon style={{ color: "gray" }} />
-          </IconButton>
-        </>
-      )}
     </div>
   );
 }
