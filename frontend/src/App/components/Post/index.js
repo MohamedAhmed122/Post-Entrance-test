@@ -9,7 +9,7 @@ import BorderColorIcon from "@material-ui/icons/BorderColor";
 import ChatIcon from "@material-ui/icons/Chat";
 import "./stylePost.css";
 
-export default function åPost({ post, handleDeletePost, setPostDeleted }) {
+export default function Post({ post, handleDeletePost, setPostDeleted }) {
   const history = useHistory();
 
   return (

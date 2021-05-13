@@ -12,10 +12,10 @@
     "dev": "concurrently \"yarn run server\" \"yarn start frontend\" ",
     "data:import": "node server/seeder",
     "data:destroy": "node server/seeder -d"
-  
   },
   "dependencies": {
     "concurrently": "^6.1.0",
+    "cors": "^2.8.5",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",

@@ -38,7 +38,7 @@ export default function PostDetailPage({ match }) {
   let filterComments = [];
   filterComments = comments?.filter((comment) => comment.postId === id);
 
-  if (!post || !comments) return <Loading size={100} />;
+  if (!post) return <Loading size={100} />;
   return (
     <div className="flexCol" style={{ marginTop: 50 }}>
       {!postError ? (

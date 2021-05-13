@@ -25,7 +25,7 @@ export default function PostPage() {
 
   const handleDeletePost = (id) => {
     deletePost(id)
-      .then((res) => console.log(res))
+      .then((res) =>  setPostDeleted(true))
       .catch((err) => enqueueSnackbar(`Oops, ${err}`, { variant: "error" }));
   };
   console.log(posts);
