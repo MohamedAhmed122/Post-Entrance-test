@@ -40,24 +40,29 @@ export default function PostDetailPage({ match }) {
 
   if (!post || !comments) return <Loading size={100} />;
   return (
-    <div className="flexCol" style={{ marginTop: 90 }}>
+    <div className="flexCol" style={{ marginTop: 50 }}>
       {!postError ? (
         <>
-          <PostDetail post={post} />{" "}
-          <CommentFrom
-            setEditedComment={setEditedComment}
-            id={id}
-            editedComment={editedComment}
-            setCommentChanged={setCommentChanged}
-          />
-          {filterComments?.map((comment) => (
-            <CommentList
-              id={id}
-              comment={comment}
-              setCommentChanged={setCommentChanged}
+          <PostDetail post={post} />
+          <div className="comment_section flexCol">
+            <h2 className="title">
+              Tell us what do you think about this Post?
+            </h2>
+            <CommentFrom
               setEditedComment={setEditedComment}
+              id={id}
+              editedComment={editedComment}
+              setCommentChanged={setCommentChanged}
             />
-          ))}
+            {filterComments?.map((comment) => (
+              <CommentList
+                id={id}
+                comment={comment}
+                setCommentChanged={setCommentChanged}
+                setEditedComment={setEditedComment}
+              />
+            ))}
+          </div>
         </>
       ) : (
         <Alert severity="error">Error Fetching the post Details!</Alert>

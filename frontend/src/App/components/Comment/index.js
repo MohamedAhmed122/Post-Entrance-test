@@ -28,7 +28,7 @@ export function CommentFrom({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (editedComment.id) {
+    if (editedComment?.id) {
       updateComment(editedComment.id, { comment })
         .then((res) => setCommentChanged(true))
         .catch((err) => console.log(err));
