@@ -11,7 +11,8 @@
     "client": "yarn start --prefix frontend",
     "dev": "concurrently \"yarn run server\" \"yarn start frontend\" ",
     "data:import": "node server/seeder",
-    "data:destroy": "node server/seeder -d"
+    "data:destroy": "node server/seeder -d",
+    "heroku-postbuild": "YARN_CONFIG_PRODUCTION=false yarn install  --prefix frontend && yarn run build  --prefix frontend"
   },
   "dependencies": {
     "concurrently": "^6.1.0",
