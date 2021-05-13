@@ -1,8 +1,7 @@
-import { useState } from "react";
+
 import { useHistory } from "react-router-dom";
 import Row from "../Row";
-import { CommentFrom, CommentList } from "../Comment/index";
-import { Button, ButtonGroup, IconButton } from "@material-ui/core";
+import { Button, ButtonGroup } from "@material-ui/core";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import DeleteIcon from "@material-ui/icons/Delete";

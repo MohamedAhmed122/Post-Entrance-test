@@ -18,16 +18,7 @@
 .mr {
   margin: 20px;
 }
-@media (max-width: 900px) {
-  .detail {
-    width: 95%;
-  }
-}
-@media (max-width: 450px) {
-  .mr {
-    margin: 7px;
-  }
-}
+
 .comment_section{
   width: 60%;
   margin: auto;
@@ -38,4 +29,16 @@
   box-shadow: 0px 5px 17px -7px rgba(0, 0, 0, 0.4);
   margin-bottom: 60px;
  
+}
+
+
+@media (max-width: 900px) {
+  .detail, .comment_section {
+    width: 95%;
+  }
+}
+@media (max-width: 450px) {
+  .mr {
+    margin: 7px;
+  }
 }

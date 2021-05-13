@@ -9,7 +9,7 @@
     "start": "node server/server.js",
     "server": "nodemon server/server.js",
     "client": "yarn start --prefix frontend",
-    "dev": "concurrently \"yarn run server\" \"yarn run frontend\" ",
+    "dev": "concurrently \"yarn run server\" \"yarn start frontend\" ",
     "data:import": "node server/seeder",
     "data:destroy": "node server/seeder -d"
   },

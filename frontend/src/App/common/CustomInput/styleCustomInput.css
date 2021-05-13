@@ -18,3 +18,15 @@
     background-color: transparent;
     flex: 1;
 } 
+
+@media(max-width: 500px){
+    .custom_input{
+        max-width: 350px;
+    }
+}
+
+@media(max-width: 380px){
+    .custom_input{
+        max-width: 300px;
+    }
+}

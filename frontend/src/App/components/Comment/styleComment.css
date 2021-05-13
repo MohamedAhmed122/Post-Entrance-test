@@ -1,3 +1,7 @@
+.comment_container {
+  width: 700px;
+}
+
 .comment {
   border: 1px solid #fce8a0;
   padding: 10px;
@@ -18,8 +22,19 @@
   border: 1px solid #fce8a0 !important;
   margin-left: 5px !important;
 }
-.chip{
+.chip {
   background-color: #f7c71a !important;
   color: white !important;
   border: 1px solid white !important;
+}
+
+@media(max-width: 800px){
+  .comment_container {
+    width: 500px;
+  }
+}
+@media(max-width: 550px){
+  .comment_container {
+    width: auto;
+  }
 }

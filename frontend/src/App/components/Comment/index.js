@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSnackbar } from "notistack";
 import SendIcon from "@material-ui/icons/Send";
 import CustomInput from "../../common/CustomInput";
 import { IconButton } from "@material-ui/core";
@@ -19,7 +20,7 @@ export function CommentFrom({
   id,
 }) {
   const [comment, setComment] = useState("");
-
+  const { enqueueSnackbar } = useSnackbar();
   useEffect(() => {
     if (editedComment) {
       setComment(editedComment.comment);
@@ -31,12 +32,12 @@ export function CommentFrom({
     if (editedComment?.id) {
       updateComment(editedComment.id, { comment })
         .then((res) => setCommentChanged(true))
-        .catch((err) => console.log(err));
+        .catch((err) => enqueueSnackbar(`Oops, ${err}`, { variant: "error" }));
       setEditedComment("");
     } else {
       createComment(id, { comment })
         .then((res) => setCommentChanged(true))
-        .catch((err) => console.log(err));
+        .catch((err) => enqueueSnackbar(`Oops, ${err}`, { variant: "error" }));
     }
 
     setComment("");
@@ -68,14 +69,15 @@ export function CommentList({
   setCommentChanged,
   id,
 }) {
+  const { enqueueSnackbar } = useSnackbar(); 
   const handleDelete = (id) => {
     deleteComment(id)
       .then((res) => setCommentChanged(true))
-      .catch((err) => console.log(err));
+      .catch((err) => enqueueSnackbar(`Oops, ${err}`, { variant: "error" }));
   };
   // console.log(comment);
   return (
-    <div style={{ width: 700 }}>
+    <div className='comment_container'>
       <p className="comment">{comment.comment}</p>
       <div className="date">
         <Chip label="today at 3:00" variant="outlined" className="chip" />

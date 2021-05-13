@@ -18,7 +18,7 @@ const validationSchema = Yup.object({
 });
 
 export default function CreatePost({ post }) {
-  const [displayDone, setDisplayDone] = useState(false);
+  const [displayDone, setDisplayDone] = useState(false); 
   const { enqueueSnackbar } = useSnackbar();
   const { id } = useParams();
 
